@@ -1,9 +1,8 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../utils/const";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
+import { useEffect } from "react";
 import UserCard from "./UserCard";
 
 const Feed = () => {
@@ -18,7 +17,7 @@ const Feed = () => {
       });
       dispatch(addFeed(res?.data?.data));
     } catch (err) {
-      console.error(err);
+      //TODO: handle error
     }
   };
 
@@ -33,7 +32,7 @@ const Feed = () => {
   return (
     feed && (
       <div className="flex justify-center my-10">
-        <UserCard user={feed[0]} />
+        <UserCard user={feed[0]} showActions={true} />
       </div>
     )
   );
